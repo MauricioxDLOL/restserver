@@ -46,7 +46,7 @@ app.get('/usuario', verificaToken, (req, res)=> {
         })
 })
   
-app.post('/usuario', [verificaToken,verificaRol],  (req, res) => {
+app.post('/usuario', [verificaToken,verificaRol], (req, res) => {
   
     let body = req.body;
 

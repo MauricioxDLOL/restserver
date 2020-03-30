@@ -124,6 +124,8 @@ app.post("/google", async (req,res) => {
 
         if(usuarioDB){
 
+            console.log("wena wena los cabros");
+
             if(usuarioDB.google === false){
 
                 return res.status(400).json({
@@ -155,14 +157,18 @@ app.post("/google", async (req,res) => {
 
             //Si el usuario no existe en la base de datos
 
-            let usuario = new Usuario();
+            console.log(googleUser);
 
-            usuario.nombre = googleUser.nombre;
-            usuario.email = googleUser.email;
-            usuario.img = googleUser.img;
-            usuario.google = true;
-            usuario.password = ":)";
 
+            let usuario = new Usuario({
+
+                nombre: googleUser.nombre,
+                email: googleUser.email,
+                img: googleUser.img,
+                google: true
+            });
+
+        
             usuario.save((err,usuarioDB) => {
 
                 if(err){
